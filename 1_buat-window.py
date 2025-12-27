@@ -1,7 +1,7 @@
 from core.base import Base
 class Test(Base):
     def initialize(self):
-        print("Inisialisasi Window")
+        print("init...")
 
     def update(self):
         pass
