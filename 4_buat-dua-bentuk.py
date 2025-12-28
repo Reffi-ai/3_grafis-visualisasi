@@ -13,21 +13,11 @@ class Test(Base):
             gl_Position = vec4(position.x, position.y, position.z, 1.0);
         }
         """
-
         # Fragment Shader
-        # Fragment color kuning
-        # fsCode = """
-        # out vec4 fragColor;
-        # void main(){
-        #     fragColor = vec4(1.0, 1.0, 0.0, 1.0);
-        # }
-        # """
-
-        # Fragment color oranye
         fsCode = """
         out vec4 fragColor;
         void main(){
-            fragColor = vec4(1.0, 0.5, 0.0, 1.0);
+            fragColor = vec4(1.0, 1.0, 0.0, 1.0);
         }
         """
 
@@ -37,23 +27,15 @@ class Test(Base):
         # Mengatur lebar garis
         glLineWidth(4)
 
+       
         # VAO Vertex Array Object, menyimpan array vertex
         # glGenVertexArrays membuat id buffer
         self.vaoTri = glGenVertexArrays(1)
         # menhubungkan
         glBindVertexArray(self.vaoTri)
-        # positionDataTri = [
-        #     [-0.5, 0.8, 0.0], 
-        #     [-0.2,0.2, 0.0],
-        #     [-0.8, 0.2, 0.0]
-        # ]
-
-        # posisi segitiga di atas persegi
-        positionDataTri = [
-            [ 0.0, 0.8, 0.0], 
-            [ 0.4, 0.2, 0.0],
-            [-0.4, 0.2, 0.0]
-        ]
+        positionDataTri = [[-0.5, 0.8, 0.0], 
+                           [-0.2,0.2, 0.0],
+                            [-0.8, 0.2, 0.0]]
         # membuat variabel
         self.vertexCountTri = len(positionDataTri)
         positionAttributeTri = Attribute("vec3",positionDataTri)
@@ -61,20 +43,10 @@ class Test(Base):
 
         self.vaoSquare = glGenVertexArrays(1)
         glBindVertexArray(self.vaoSquare)
-        # positionDataSquare = [
-        #     [0.8, 0.8, 0.0], 
-        #     [0.8,0.2, 0.0],
-        #     [0.2, 0.2, 0.0], 
-        #     [0.2, 0.8, 0.0]
-        # ]
-
-        # posisi persegi di bawah segitiga
-        positionDataSquare = [
-            [0.3, -0.4, 0.0], 
-            [0.3, 0.2, 0.0],
-            [-0.3, 0.2, 0.0], 
-            [-0.3, -0.4, 0.0]
-        ]
+        positionDataSquare = [[0.8, 0.8, 0.0], 
+                              [0.8,0.2, 0.0],
+                              [0.2, 0.2, 0.0], 
+                              [0.2, 0.8, 0.0]]
 
         self.vertexCountSquare =len(positionDataSquare)
         positionAttributeSquare = Attribute("vec3", positionDataSquare)
