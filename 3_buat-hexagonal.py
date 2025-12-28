@@ -7,7 +7,6 @@ class Test(Base):
     def initialize(self):
         print("init...")
 
-        # Vertex Shader
         # position merujuk dari referensi associateVariable
         vsCode = """
         in vec3 position;
@@ -15,21 +14,11 @@ class Test(Base):
             gl_Position = vec4(position.x, position.y, position.z, 1.0);
         }
         """
-        
-        # Fragment Shader
-        # Fragment color kuning
-        # fsCode = """
-        # out vec4 fragColor;
-        # void main(){
-        #     fragColor = vec4(1.0, 1.0, 0.0, 1.0);
-        # }
-        # """
 
-        # Fragment color ungu
         fsCode = """
         out vec4 fragColor;
         void main(){
-            fragColor = vec4(0.5, 0.0, 0.8, 1.0);
+            fragColor = vec4(1.0, 1.0, 0.0, 1.0);
         }
         """
 
@@ -41,27 +30,12 @@ class Test(Base):
         vaoRef = glGenVertexArrays(1)
         glBindVertexArray(vaoRef)
 
-        # bentuk hexagonal
-        # positionData = [ 
-        #     [ 0.8, 0.0, 0.0], [ 0.4, 0.6, 0.0],
-        #     [-0.4, 0.6, 0.0], [-0.8, 0.0,0.0],
-        #     [-0.4, -0.6, 0.0], [0.4,-0.6, 0.0] 
-        # ]
-
-        #bentuk layang-layang
-        positionData = [
-            [ 0.0,  0.8, 0.0],   
-            [ 0.5,  0.3, 0.0],   
-            [ 0.0, -0.8, 0.0],   
-            [-0.5,  0.3, 0.0] 
+        positionData = [ 
+            [ 0.8, 0.0, 0.0], [ 0.4, 0.6, 0.0],
+            [-0.4, 0.6, 0.0], [-0.8, 0.0,0.0],
+            [-0.4, -0.6, 0.0], [0.4,-0.6, 0.0] 
         ]
 
-        #bentuk segitiga
-        # positionData = [
-        #     [ 0.0,  0.5, 0.0],   
-        #     [ 0.5, -0.6, 0.0],     
-        #     [-0.5, -0.6, 0.0] 
-        # ]
 
         self.vertexCount = len(positionData)
         # Attribute mengupload data ke GPU
@@ -82,4 +56,3 @@ class Test(Base):
         glDrawArrays(GL_LINE_LOOP, 0, self.vertexCount)
 
 Test().run()
-
